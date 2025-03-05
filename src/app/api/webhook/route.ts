@@ -25,6 +25,17 @@ export async function POST(req: NextRequest) {
 
   if (req.method === 'POST') {
     try {
+      const contentType = req.headers.get('content-type') || ''
+
+      if (!contentType.includes('application/json')) {
+        return NextResponse.json(
+          { 
+            error: `Unsupported content type. Expected application/json. The content type given is "${ contentType }"`,
+          },
+          { status: 415 }
+        )
+      }
+
       // Use `any` type since the type definition of the payload is unknown.
       const payload: any = await req.json()
 
@@ -56,8 +67,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         { 
           message: `Received payload and stored in Vercel blob storage.`,
-          payload,
-          putBlobResult
+          blobUrl: putBlobResult.url
         },
         {
           status: 200,
