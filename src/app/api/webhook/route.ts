@@ -37,10 +37,12 @@ export async function POST(req: NextRequest) {
 
       const pathname = `ksense-code-challenge-payload.json`
       const putCommandOptions: PutCommandOptions = { access: 'public' }
+      // Vercel Blob storage only accepts strings
+      const putBody = JSON.stringify(payload)
 
       const putBlobResult: PutBlobResult = await put(
         pathname, 
-        payload, 
+        putBody,
         putCommandOptions
       )
 
