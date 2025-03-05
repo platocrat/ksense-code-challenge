@@ -32,7 +32,12 @@ export async function POST(req: NextRequest) {
           { 
             error: `Unsupported content type. Expected application/json. The content type given is "${ contentType }"`,
           },
-          { status: 415 }
+          { 
+            status: 415,
+            headers: {
+              'Content-Type': 'application/json',
+            }, 
+          }
         )
       }
 
