@@ -30,3 +30,12 @@ Use the Webhook URL:
 ```md
 https://<your-vercel-project>.vercel.app/api/webhook
 ```
+
+## Test the Webhook
+
+Local testing with the `curl` command:
+
+```bash
+curl -X POST http://localhost:3000/api/webhook \
+  -H "Content-Type: application/json" \
+  -d '{ "secretCode": "test1234" }'

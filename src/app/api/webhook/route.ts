@@ -1,4 +1,5 @@
 // Externals
+import { put, PutBlobResult, PutCommandOptions } from '@vercel/blob'
 import { NextRequest, NextResponse } from 'next/server'
 // Locals
 import { getConsoleMetadata } from '@/app/utils/debug'
@@ -27,19 +28,34 @@ export async function POST(req: NextRequest) {
       // Use `any` type since the type definition of the payload is unknown.
       const payload: any = await req.json()
 
-      const message = `Received payload successfully`
-
       console.log(
         `${ 
           consoleMetadata(true, FUNCTION_NAME) 
-        } ${ message }: `,
+        } Received payload successfully. 'payload' received: `,
         payload
+      )
+
+      const pathname = `ksense-code-challenge-payload.json`
+      const putCommandOptions: PutCommandOptions = { access: 'public' }
+
+      const putBlobResult: PutBlobResult = await put(
+        pathname, 
+        payload, 
+        putCommandOptions
+      )
+
+      console.log(
+        `${
+          consoleMetadata(true, FUNCTION_NAME)
+        } Stored payload in Vercel blob storage. 'putBlobResult': `,
+        putBlobResult
       )
 
       return NextResponse.json(
         { 
-          message,
-          payload
+          message: `Received payload and stored in Vercel blob storage.`,
+          payload,
+          putBlobResult
         },
         {
           status: 200,
