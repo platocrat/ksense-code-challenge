@@ -5,8 +5,9 @@ This project is a simple webhook built with **Next.js** and **TypeScript** to re
 ## How it works
 
 - Accepts a POST request at `https://ksense-code-challenge-xi.vercel.app/api/webhook`.
-- Stores the entire payload in Next.js KV
-- Logs and returns the payload in the response.
+- Stores the entire payload in Next.js [Vercel blob storage](https://www.google.com/search?client=safari&rls=en&q=vercel+blob+storage&ie=UTF-8&oe=UTF-8).
+- Logs and returns the blob storage URL in the response.
+  - The blob storage URL can be used to obtain the original payload and secret code.
 
 ## Deploy
 
