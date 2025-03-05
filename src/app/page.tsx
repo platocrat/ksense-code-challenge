@@ -19,7 +19,7 @@ export default function Home() {
           <li>
             Stores the entire payload in Next.js{ ' ' }
             <a
-              href="https://www.google.com/search?client=safari&rls=en&q=vercel+blob+storage&ie=UTF-8&oe=UTF-8"
+              href="https://vercel.com/docs/vercel-blob"
               target="_blank"
               rel="noopener noreferrer"
             >
