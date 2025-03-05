@@ -4,7 +4,7 @@ This project is a simple webhook built with **Next.js** and **TypeScript** to re
 
 ## How it works
 
-- Accepts a POST request at `/api/webhook`.
+- Accepts a POST request at `https://ksense-code-challenge-xi.vercel.app/api/webhook`.
 - Stores the entire payload in Next.js KV
 - Logs and returns the payload in the response.
 
@@ -28,7 +28,7 @@ This project is a simple webhook built with **Next.js** and **TypeScript** to re
 Use the Webhook URL:
 
 ```md
-https://<your-vercel-project>.vercel.app/api/webhook
+https://ksense-code-challenge-xi.vercel.app/api/webhook
 ```
 
 ## Test the Webhook
@@ -36,6 +36,6 @@ https://<your-vercel-project>.vercel.app/api/webhook
 Local testing with the `curl` command:
 
 ```bash
-curl -X POST http://localhost:3000/api/webhook \
+curl -X POST https://ksense-code-challenge-xi.vercel.app/api/webhook \
   -H "Content-Type: application/json" \
   -d '{ "secretCode": "test1234" }'
